@@ -38,6 +38,9 @@ spec:
 #            httpGet:
 #              path: :8080/
 #              port: http
+          volumeMounts:
+          - mountPath: /data
+            name: download-data
           resources:
 {{ toYaml .Values.resources | indent 12 }}
     {{- with .Values.nodeSelector }}
@@ -52,3 +55,7 @@ spec:
       tolerations:
 {{ toYaml . | indent 8 }}
     {{- end }}
+      volumes:
+      - hostPath:
+          path: /var/data
+        name: download-data
