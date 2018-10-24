@@ -18,6 +18,10 @@ spec:
       targetPort: web
       protocol: TCP
       name: web
+    - port: {{ .Values.service.download.port }}
+      targetPort: download
+      protocol: TCP
+      name: download
   selector:
     app: {{ include "webui-aria2.name" . }}
     release: {{ .Release.Name }}

@@ -6,7 +6,7 @@ replicaCount: 1
 
 image:
   repository: surenpi/webui-aria2
-  tag: latest
+  tag: download-service
   pullPolicy: IfNotPresent
 
 nameOverride: ""
@@ -18,6 +18,8 @@ service:
     port: 6800
   server:
     port: 8080
+  download:
+    port: 8089
 
 ingress:
   enabled: true
@@ -32,6 +34,9 @@ ingress:
     - path: /jsonrpc
       name: jsonrpc
       port: server
+    - path: /
+      name: download
+      port: download
   tls: []
   #  - secretName: chart-example-tls
   #    hosts:

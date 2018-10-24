@@ -30,6 +30,9 @@ spec:
             - name: web
               containerPort: 8080
               protocol: TCP
+            - name: download
+              containerPort: 8089
+              protocol: TCP
 #          livenessProbe:
 #            httpGet:
 #              path: :8080/
